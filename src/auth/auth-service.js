@@ -3,9 +3,9 @@ const jwt = require('jsonwebtoken')
 const config = require('../config')
 
 const AuthService = {
-  getUserWithUserName(db, user_name) {
-    return db('qualinteer_users')
-      .where({ user_name })
+  getUserWithEmail(db, email) {
+    return db('users')
+      .where({ email })
       .first()
   },
   parseBasicToken(token) {

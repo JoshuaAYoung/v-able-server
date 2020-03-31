@@ -4,10 +4,10 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
-const opportunitiesRouter = require('./opportunities/opportunities-router')
-const reviewsRouter = require('./reviews/reviews-router')
+const oppsRouter = require('./opportunities/opps-router')
 const authRouter = require('./auth/auth-router')
 const usersRouter = require('./users/users-router')
+const orgRouter = require('./organizations/org-router')
 
 const app = express()
 
@@ -17,8 +17,8 @@ app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
 app.use(cors())
 app.use(helmet())
 
-app.use('/api/opportunities', opportunitiesRouter)
-app.use('/api/reviews', reviewsRouter)
+app.use('/api/opportunities', oppsRouter)
+app.use('/api/organizations', orgRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/users', usersRouter)
 

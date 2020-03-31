@@ -1,20 +1,26 @@
-const xss = require('xss')
 const bcrypt = require('bcryptjs')
 const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]/
 
 const UsersService = {
-  hasUserWithUserName(db, user_name) {
-    return db('qualinteer_users')
-      .where({ user_name })
+  hasUserWithEmail(db, email) {
+    return db('users')
+      .where({ email })
       .first()
       .then(user => !!user)
   },
   insertUser(db, newUser) {
     return db
       .insert(newUser)
-      .into('qualinteer_users')
+      .into('users')
       .returning('*')
       .then(([user]) => user)
+  },
+  insertOrg(db, newOrg) {
+    return db
+      .insert(newOrg)
+      .into('organizations')
+      .returning('*')
+      .then(([org]) => org)
   },
   validatePassword(password) {
     if (password.length < 8) {
@@ -34,15 +40,11 @@ const UsersService = {
   hashPassword(password) {
     return bcrypt.hash(password, 12)
   },
-  serializeUser(user) {
-    return {
-      id: user.id,
-      full_name: xss(user.full_name),
-      user_name: xss(user.user_name),
-      nickname: xss(user.nick_name),
-      date_created: new Date(user.date_created),
-    }
-  },
+  deleteUser(db, user_id) {
+    return db('users')
+      .where({ user_id })
+      .delete()
+  }
 }
 
 module.exports = UsersService

@@ -1,158 +1,45 @@
 BEGIN;
 
-TRUNCATE
-  thingful_reviews,
-  thingful_things,
-  thingful_users
+  TRUNCATE
+  applications,
+  opportunities,
+  organizations,
+  users
   RESTART IDENTITY CASCADE;
 
-INSERT INTO thingful_users (user_name, full_name, nickname, password)
-VALUES
-  ('dunder', 'Dunder Mifflin', null, '$2a$08$HnsgKis5nhYTlBYym0zzSeOKUXcscxzbA1IFpfNeLLlyLx8CZNQlm'),
-  ('b.deboop', 'Bodeep Deboop', 'Bo', '$2a$08$bImEMWdUSg9PlHtC.NqssuyJHCmatki6CHd77TfDdf8SZEjK2kwCq'),
-  ('c.bloggs', 'Charlie Bloggs', 'Charlie', '$2a$08$bSM8qSOMNFngogOxB1oLBuI4cZpsP.iUm0gBfGUST7gqt77BiOUwS'),
-  ('s.smith', 'Sam Smith', 'Sam', '$2a$08$FOc9hDiSoLixRO/NXAeHJeubgFCVUSh/kp/qzUySQWIIMlByG/UgC'),
-  ('lexlor', 'Alex Taylor', 'Lex', '$2a$08$WsT6fWLWOTfq/ztVFq6aseL.580NvN9o8ohk6kYiGt5AI1leZCq2m'),
-  ('wippy', 'Ping Won In', 'Ping', '$2a$08$ZSRM.JGZDHkZpNiXtDe/1O5pODjoNzLc/8FQsj5S6/YYnqpXrMDq6');
 
-INSERT INTO thingful_things (title, image, user_id, content)
-VALUES
-  ('Hand-Painted Rubber Ducky', 'https://loremflickr.com/750/300/landscape?random=1', 1, 'This ducky has been hand-painted and is now art. Therefore it is useless and cannot be put in water.'),
-  ('Cloning Machine', 'https://loremflickr.com/750/300/landscape?random=2', 2, '100% guaranteed to occasionally work every time! Requires a 167.23v power outlet or a dragonscale battery (obtained separately by solving a riddle).'),
-  ('Kangaroo Carrier', 'https://loremflickr.com/750/300/landscape?random=3', 3, 'This convenient item can assist you in bringing your kangaroo to your favorite grocery store, or as a conversation starter at a first date or funeral.'),
-  ('Love Potion #26', 'https://loremflickr.com/750/300/landscape?random=4', 4, 'While not as well known as its predecessor, Love Potion #9, this formulation has been proven to be effective in winning the affections of some small amphibians.'),
-  ('My Freeze Ray', 'https://loremflickr.com/750/300/landscape?random=5', 5, 'With this freeze ray, you can stop the world.'),
-  ('Personal EMP Generator', 'https://loremflickr.com/750/300/landscape?random=6', 6, 'With its guaranteed 10m radius, this discreet device will disable an entire busload of iPhones with the push of a button. It is recommended to include an analog camera which can record the entertaining looks on the faces of those affected, as well as a riot shield in case of mass hysteria.'),
-  ('Foolproof Instant Wealth Pamphlet', 'https://loremflickr.com/750/300/landscape?random=7', 1, 'Purchase this pamphlet for $100. Sell this pamphlet to a billion people for $100. Acquisition of this pamphlet is indeed proof of foolishness!'),
-  ('Story Water Spigot', 'https://loremflickr.com/750/300/landscape?random=8', 2, 'Once installed by a qualified leprechaun, this spigot will produce a steady stream of stories which can be later be adapted to motion pictures which will not be quite as good as the originals.'),
-  ('Ruby Red Slippers', 'https://loremflickr.com/750/300/landscape?random=9', 3, 'Get home quicker than either Uber or Lyft! Three taps of the heels is all it takes. One size fits all.'),
-  ( 'Magic Lamp', 'https://loremflickr.com/750/300/landscape?random=10', 4, 'May or may not produce a genie.');
+  INSERT INTO users
+    (email, password, full_name, user_type, date_created)
+  VALUES
+    ('testuser1@gmail.com', '$2a$12$ml7Sc3QuD5JsIKYb1G4/0eaJreelMHwF4KdrUBWhpE5SGTxHW4ZY.', 'John Doe', 'organization', '2019-12-22T16:28:32.615Z'),
+    ('testuser2@gmail.com', '$2a$12$WHyHTYDqa/dqUh7.htNEBuQ5RfBajSZn4HmdLA5r2tNtnBde9XUJ6', 'Jane Doe', 'organization', '2019-12-22T16:28:32.615Z'),
+    ('testuser3@gmail.com', '$2a$12$EALd0PQN7rJ.ixvvMu15Jesb4Cs44VxXZowGts5fyw35nqIl8nSbq', 'Billy Joe', 'volunteer', '2019-12-22T16:28:32.615Z'),
+    ('testuser4@gmail.com', '$2a$12$f.Kr6bGXSm1y0NfUw3e5helKXBh0byQZrB1bwVbAaM6OUtwTcygja', 'Timmy Tom', 'volunteer', '2019-12-22T16:28:32.615Z');
 
-INSERT INTO thingful_reviews (
-  text,
-  rating,
-  thing_id,
-  user_id
-) VALUES
-  (
-    'This thing is amazing.',
-    4,
-    1,
-    2
-  ),
-  (
-    'Put a bird on it!',
-    4,
-    1,
-    3
-  ),
-  (
-    'All the other reviewers are obviously insane, but this thing is actually pretty amazing.',
-    5,
-    1,
-    4
-  ),
-  (
-    'When life gives you lemons, trade them for this thing.',
-    4,
-    1,
-    5
-  ),
-  (
-    'This cured my psoriasis, but left me unable to tell the difference between the taste of squash and the concept of increasing.',
-    3,
-    2,
-    6
-  ),
-  (
-    'I think I swallowed a bug.',
-    1,
-    2,
-    1
-  ),
-  (
-    'I have not used it or even seen it, and I do not actually know what it is. I do not know why I am writing this review, how I got here, or what my name is. Three stars!',
-    3,
-    2,
-    3
-  ),
-  (
-    'Ew.',
-    1,
-    4,
-    6
-  ),
-  (
-    'I heard about this one time at band camp.',
-    3,
-    4,
-    4
-  ),
-  (
-    'big time many goodness!!!',
-    5,
-    10,
-    3
-  ),
-  (
-    'Iste, architecto obcaecati tenetur quidem voluptatum ipsa quam!',
-    2,
-    10,
-    5
-  ),
-  (
-    'There are some better things. There are also some worse things.',
-    3,
-    7,
-    1
-  ),
-  (
-    'Great holiday present for extraterrestrials (only the kind with the lightbulb heads).',
-    4,
-    7,
-    2
-  ),
-  (
-    'It does not say this on the label, but this thing can be used to summon rain on the spring equinox with the proper incantation.',
-    3,
-    7,
-    3
-  ),
-  (
-    'Do not believe the hype!',
-    1,
-    7,
-    4
-  ),
-  (
-    'I would rather have a shoulder rub.',
-    3,
-    9,
-    6
-  ),
-  (
-    'I heard this has lead in it! Run! RRUUUUUUNNNN!',
-    1,
-    6,
-    5
-  ),
-  (
-    'This would not fit inside the cabin of my horse-and-buggy, but it was a useful bribe after the string cheese incident.',
-    4,
-    6,
-    1
-  ),
-  (
-    'Slightly better than waking up deep in the forests of Madagascar and having no idea how you got there, but not THAT much better.',
-    3,
-    8,
-    2
-  ),
-  (
-    'Octopii give it eight tentacles up!',
-    5,
-    8,
-    4
-  );
 
-COMMIT;
+  INSERT INTO organizations
+    (usr_id, name, address, city, state, zipcode, phone, website)
+  VALUES
+    (2, 'BEST FRIENDS ANIMAL SOCIETY', '5001 Angel Canyon Road', 'Kanab', 'UT', 84741, null, 'https://bestfriends.org/sanctuary'),
+    (2, 'THE DAILY SOURCE', '1509 Blake St.', 'Denver', 'CO', 80202, null, 'http://dailysource.org/'),
+    (1, 'RESTORATION PROJECT INTERNATIONAL', '1609 Havana Street', 'Aurora', 'CO', 80010, '555-694-3256', 'http://www.restorationpi.org');
+
+
+  INSERT INTO opportunities
+    (org_id, title, description, contact, start_date, duration, commitment, ed_level, experience, license, remote, posted)
+  VALUES
+    (3, 'Community Outreach Coordinator', 'This individual will work with the Executive Board Member in charge of Community Outreach to: Plan and implement outreach events Be RPI''s connection to the community Cultivate relationships and collaborations with individuals, businesses, and other non-profit organizations doing similar work. Provide assistance to RPI''s program assistants in supporting our constituents.', 'info@restorationpi.com', '02-24-2020', '8 months', '20 hours', 'none', 'Public Relations', null, false, '10-25-2019'),
+    (1, 'Clinic Stipend-Volunteer Veterinary Technician', 'Shelters across the country are expecting to experience overcrowding, economic hardships, and staff shortages due to the COVID-19 pandemic. This position increases the organization''s ability to continue to provide critical services to shelter partners, local pet owners, and sanctuary animals.', 'info@bestfriendsas.com', 'ASAP', 'As long as possible', 'We''ll work with your schedule', 'associates', 'Animal Care / Handling', 'Vet Tech', false, '02-28-2020'),
+    (1, 'Clinic Stipend-Volunteer Veterinarian', 'Shelters across the country are expecting to experience overcrowding, economic hardships, and staff shortages due to the COVID-19 pandemic. This position increases the organization''s ability to continue to provide critical services to shelter partners, local pet owners, and sanctuary animals. The Sanctuary is home to a beautifully equipped, state-of-the-art veterinary clinic for homeless animals and you will be providing medical services to animals in need with the support of an enthusiastic and skilled veterinary staff.', 'info@bestfriendsas.com', 'ASAP', 'As long as possible', 'We''ll work with your schedule', 'bachelors', 'Animal Therapy', 'Licensed Veterinarian', false, '02-26-2020'),
+    (2, 'Seeking editor for leading edge daily news site', 'DailySource.org is looking for an individual with a nose for news to help update our site with great content and lay out the front page. Our nonprofit focuses on news about making the world a better place, particularly news related to topics such as global poverty, nonprofits, climate change and human rights. All volunteering is via the computer -- you can be anywhere in the world.', 'volunteer@dailysource.net', 'The sooner the better', '20 weeks', '10 hours', 'associates', 'Journalism', null, true, '03-10-2020');
+
+
+  INSERT INTO applications
+    (opp_id, usr_id, message, time_applied, subject)
+  VALUES
+    (1, 3, 'Hi there, I''m really interested in the opp to volunteer for such an amazing company! Please reach out to me if you still need someone. Best, Billy', '2019-12-22T16:28:32.615Z', 'Looking To Help'),
+    (2, 3, 'To whom it may concern, I think I can be of service. Please let me know if the opp is still available. Best, Billy', '2020-03-21T16:28:32.615Z', 'Would love to help'),
+    (3, 3, 'Hello, I am a vet and just moved to Kanab. I''d love to help, though I can only offer 10 hours a week if that''s ok. Let me know. Sincerely, Tim', '2020-03-22T16:28:32.615Z', 'Vet looking to help');
+
+
+  COMMIT;

@@ -2,14 +2,14 @@ const knex = require('knex')
 const app = require('../src/app')
 const helpers = require('./test-helpers')
 
-describe('Opportunities Endpoints', function () {
+describe('Opps Endpoints', function () {
   let db
 
   const {
     testUsers,
-    testOpportunities,
+    testOpps,
     testReviews,
-  } = helpers.makeOpportunitiesFixtures()
+  } = helpers.makeOppsFixtures()
 
   before('make knex instance', () => {
     db = knex({
@@ -25,155 +25,155 @@ describe('Opportunities Endpoints', function () {
 
   afterEach('cleanup', () => helpers.cleanTables(db))
 
-  describe(`GET /api/opportunities`, () => {
-    context(`Given no opportunities`, () => {
+  describe(`GET /api/opps`, () => {
+    context(`Given no opps`, () => {
       it(`responds with 200 and an empty list`, () => {
         return supertest(app)
-          .get('/api/opportunities')
+          .get('/api/opps')
           .expect(200, [])
       })
     })
 
-    context('Given there are opportunities in the database', () => {
-      beforeEach('insert opportunities', () =>
-        helpers.seedOpportunitiesTables(
+    context('Given there are opps in the database', () => {
+      beforeEach('insert opps', () =>
+        helpers.seedOppsTables(
           db,
           testUsers,
-          testOpportunities,
+          testOpps,
           testReviews,
         )
       )
 
-      it('responds with 200 and all of the opportunities', () => {
-        const expectedOpportunities = testOpportunities.map(opportunity =>
-          helpers.makeExpectedOpportunity(
+      it('responds with 200 and all of the opps', () => {
+        const expectedOpps = testOpps.map(opp =>
+          helpers.makeExpectedOpp(
             testUsers,
-            opportunity,
+            opp,
             testReviews,
           )
         )
         return supertest(app)
-          .get('/api/opportunities')
-          .expect(200, expectedOpportunities)
+          .get('/api/opps')
+          .expect(200, expectedOpps)
       })
     })
 
-    context(`Given an XSS attack opportunity`, () => {
+    context(`Given an XSS attack opp`, () => {
       const testUser = helpers.makeUsersArray()[1]
       const {
-        maliciousOpportunity,
-        expectedOpportunity,
-      } = helpers.makeMaliciousOpportunity(testUser)
+        maliciousOpp,
+        expectedOpp,
+      } = helpers.makeMaliciousOpp(testUser)
 
-      beforeEach('insert malicious opportunity', () => {
-        return helpers.seedMaliciousOpportunity(
+      beforeEach('insert malicious opp', () => {
+        return helpers.seedMaliciousOpp(
           db,
           testUser,
-          maliciousOpportunity,
+          maliciousOpp,
         )
       })
 
       it('removes XSS attack content', () => {
         return supertest(app)
-          .get(`/api/opportunities`)
+          .get(`/api/opps`)
           .expect(200)
           .expect(res => {
-            expect(res.body[0].title).to.eql(expectedOpportunity.title)
-            expect(res.body[0].content).to.eql(expectedOpportunity.content)
+            expect(res.body[0].title).to.eql(expectedOpp.title)
+            expect(res.body[0].content).to.eql(expectedOpp.content)
           })
       })
     })
   })
 
-  describe(`GET /api/opportunities/:opportunity_id`, () => {
-    context(`Given no opportunities`, () => {
+  describe(`GET /api/opps/:opp_id`, () => {
+    context(`Given no opps`, () => {
       it(`responds with 404`, () => {
-        const opportunityId = 123456
+        const oppId = 123456
         return supertest(app)
-          .get(`/api/opportunities/${opportunityId}`)
-          .expect(404, { error: `Opportunity doesn't exist` })
+          .get(`/api/opps/${oppId}`)
+          .expect(404, { error: `Opp doesn't exist` })
       })
     })
 
-    context('Given there are opportunities in the database', () => {
-      beforeEach('insert opportunities', () =>
-        helpers.seedOpportunitiesTables(
+    context('Given there are opps in the database', () => {
+      beforeEach('insert opps', () =>
+        helpers.seedOppsTables(
           db,
           testUsers,
-          testOpportunities,
+          testOpps,
           testReviews,
         )
       )
 
-      it('responds with 200 and the specified opportunity', () => {
-        const opportunityId = 2
-        const expectedOpportunity = helpers.makeExpectedOpportunity(
+      it('responds with 200 and the specified opp', () => {
+        const oppId = 2
+        const expectedOpp = helpers.makeExpectedOpp(
           testUsers,
-          testOpportunities[opportunityId - 1],
+          testOpps[oppId - 1],
           testReviews,
         )
 
         return supertest(app)
-          .get(`/api/opportunities/${opportunityId}`)
-          .expect(200, expectedOpportunity)
+          .get(`/api/opps/${oppId}`)
+          .expect(200, expectedOpp)
       })
     })
 
-    context(`Given an XSS attack opportunity`, () => {
+    context(`Given an XSS attack opp`, () => {
       const testUser = helpers.makeUsersArray()[1]
       const {
-        maliciousOpportunity,
-        expectedOpportunity,
-      } = helpers.makeMaliciousOpportunity(testUser)
+        maliciousOpp,
+        expectedOpp,
+      } = helpers.makeMaliciousOpp(testUser)
 
-      beforeEach('insert malicious opportunity', () => {
-        return helpers.seedMaliciousOpportunity(
+      beforeEach('insert malicious opp', () => {
+        return helpers.seedMaliciousOpp(
           db,
           testUser,
-          maliciousOpportunity,
+          maliciousOpp,
         )
       })
 
       it('removes XSS attack content', () => {
         return supertest(app)
-          .get(`/api/opportunities/${maliciousOpportunity.id}`)
+          .get(`/api/opps/${maliciousOpp.id}`)
           .expect(200)
           .expect(res => {
-            expect(res.body.title).to.eql(expectedOpportunity.title)
-            expect(res.body.content).to.eql(expectedOpportunity.content)
+            expect(res.body.title).to.eql(expectedOpp.title)
+            expect(res.body.content).to.eql(expectedOpp.content)
           })
       })
     })
   })
 
-  describe(`GET /api/opportunities/:opportunity_id/reviews`, () => {
-    context(`Given no opportunities`, () => {
+  describe(`GET /api/opps/:opp_id/reviews`, () => {
+    context(`Given no opps`, () => {
       it(`responds with 404`, () => {
-        const opportunityId = 123456
+        const oppId = 123456
         return supertest(app)
-          .get(`/api/opportunities/${opportunityId}/reviews`)
-          .expect(404, { error: `Opportunity doesn't exist` })
+          .get(`/api/opps/${oppId}/reviews`)
+          .expect(404, { error: `Opp doesn't exist` })
       })
     })
 
-    context('Given there are reviews for opportunity in the database', () => {
-      beforeEach('insert opportunities', () =>
-        helpers.seedOpportunitiesTables(
+    context('Given there are reviews for opp in the database', () => {
+      beforeEach('insert opps', () =>
+        helpers.seedOppsTables(
           db,
           testUsers,
-          testOpportunities,
+          testOpps,
           testReviews,
         )
       )
 
       it('responds with 200 and the specified reviews', () => {
-        const opportunityId = 1
-        const expectedReviews = helpers.makeExpectedOpportunityReviews(
-          testUsers, opportunityId, testReviews
+        const oppId = 1
+        const expectedReviews = helpers.makeExpectedOppReviews(
+          testUsers, oppId, testReviews
         )
 
         return supertest(app)
-          .get(`/api/opportunities/${opportunityId}/reviews`)
+          .get(`/api/opps/${oppId}/reviews`)
           .expect(200, expectedReviews)
       })
     })

@@ -1,5 +1,8 @@
+
 TRUNCATE
-  thingful_reviews,
-  thingful_things,
-  thingful_users
-  RESTART IDENTITY CASCADE;
+  applications,
+  opportunities,
+  organizations,
+  users
+  RESTART
+IDENTITY CASCADE;
