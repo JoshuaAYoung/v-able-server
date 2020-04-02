@@ -1,5 +1,5 @@
 const OppsService = {
-  getAllOpps(db) {
+  getAllOpps(db, ) {
     return db
       .from('opportunities AS opp')
       .select(
