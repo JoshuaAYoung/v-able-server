@@ -1,13 +1,13 @@
-# Qualinteer Server
+# V-Able Server
 
 ## Setting Up
 
 - Install dependencies: `npm install`
-- Create development and test databases: `createdb qualinteer`, `createdb qualinteer-test`
-- Create database user: `createuser qualinteer`
+- Create development and test databases: `createdb v-able`, `createdb v-able-test`
+- Create database user: `createuser v-able`
 - Grant privileges to new user in `psql`:
-  - `GRANT ALL PRIVILEGES ON DATABASE qualinteer TO qualinteer`
-  - `GRANT ALL PRIVILEGES ON DATABASE "qualinteer-test" TO qualinteer`
+  - `GRANT ALL PRIVILEGES ON DATABASE v-able TO v-able`
+  - `GRANT ALL PRIVILEGES ON DATABASE "v-able-test" TO v-able`
 - Prepare environment file: `cp example.env .env`
 - Replace values in `.env` with your custom values.
 - Bootstrap development database: `npm run migrate`
@@ -32,8 +32,8 @@ timezone = 'UTC'
 
 ## Sample Data
 
-- To seed the database for development: `psql -U qualinteer -d qualinteer -a -f seeds/seed.qualinteer_tables.sql`
-- To clear seed data: `psql -U qualinteer -d qualinteer -a -f seeds/trunc.qualinteer_tables.sql`
+- To seed the database for development: `psql -U v-able -d v-able -a -f seeds/seed.v-able_tables.sql`
+- To clear seed data: `psql -U v-able -d v-able -a -f seeds/trunc.v-able_tables.sql`
 
 ## Scripts
 
