@@ -14,15 +14,18 @@ BEGIN;
     ('testuser1@gmail.com', '$2a$12$ml7Sc3QuD5JsIKYb1G4/0eaJreelMHwF4KdrUBWhpE5SGTxHW4ZY.', 'John Doe', 'organization', '2019-12-22T16:28:32.615Z'),
     ('testuser2@gmail.com', '$2a$12$WHyHTYDqa/dqUh7.htNEBuQ5RfBajSZn4HmdLA5r2tNtnBde9XUJ6', 'Jane Doe', 'organization', '2019-12-22T16:28:32.615Z'),
     ('testuser3@gmail.com', '$2a$12$EALd0PQN7rJ.ixvvMu15Jesb4Cs44VxXZowGts5fyw35nqIl8nSbq', 'Billy Joe', 'volunteer', '2019-12-22T16:28:32.615Z'),
-    ('testuser4@gmail.com', '$2a$12$f.Kr6bGXSm1y0NfUw3e5helKXBh0byQZrB1bwVbAaM6OUtwTcygja', 'Timmy Tom', 'volunteer', '2019-12-22T16:28:32.615Z');
+    ('testuser4@gmail.com', '$2a$12$f.Kr6bGXSm1y0NfUw3e5helKXBh0byQZrB1bwVbAaM6OUtwTcygja', 'Timmy Tom', 'volunteer', '2019-12-22T16:28:32.615Z'),
+    ('email@email.com', '$2a$12$wGW4FclAs4.ohKeWD9UjJekZ0OuxEdua47L.N9sPliX1L0O9da1O2', 'Voliny Userman', 'volunteer', '2019-12-22T16:28:32.615Z'),
+    ('j@young.net', '$2a$12$f69CvMyCKExWqhenwVAVceOZyL2H501VuW4agni.ItDEVP5yDyIfO', 'Demora Orgson', 'organization', '2019-12-22T16:28:32.615Z');
 
 
   INSERT INTO organizations
     (usr_id, name, address, city, state, zipcode, phone, website)
   VALUES
-    (2, 'BEST FRIENDS ANIMAL SOCIETY', '5001 Angel Canyon Road', 'Kanab', 'UT', 84741, null, 'https://bestfriends.org/sanctuary'),
-    (2, 'THE DAILY SOURCE', '1509 Blake St.', 'Denver', 'CO', 80202, null, 'http://dailysource.org/'),
-    (1, 'RESTORATION PROJECT INTERNATIONAL', '1609 Havana Street', 'Aurora', 'CO', 80010, '555-694-3256', 'http://www.restorationpi.org');
+    (2, 'Best Friends Animal Society', '5001 Angel Canyon Road', 'Kanab', 'UT', 84741, null, 'https://bestfriends.org/sanctuary'),
+    (2, 'The Daily Source', '1509 Blake St.', 'Denver', 'CO', 80202, null, 'http://dailysource.org/'),
+    (1, 'Restoration Project International', '1609 Havana Street', 'Aurora', 'CO', 80010, '555-694-3256', 'http://www.restorationpi.org'),
+    (6, 'Demo Organizations Across America', '123 Fourth Street', 'Denver', 'CO', 80303, '555-543-3256', 'http://www.notawebsite.org');
 
 
   INSERT INTO opportunities

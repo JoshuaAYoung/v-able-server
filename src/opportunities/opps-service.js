@@ -7,15 +7,12 @@ const OppsService = {
         'opp.org_id',
         'opp.title',
         'opp.description',
-        'opp.contact',
         'opp.posted',
         'org.usr_id',
         'org.name',
-        'org.address',
         'org.city',
         'org.state',
-        'org.zipcode',
-        'org.website'
+        'org.zipcode'
       )
       .leftJoin(
         'organizations AS org',

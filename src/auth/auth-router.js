@@ -16,7 +16,7 @@ authRouter
 
     AuthService.getUserWithEmail(
       req.app.get('db'),
-      loginuser.email
+      loginuser.email.toLowerCase()
     )
       .then(dbUser => {
         if (!dbUser) {
