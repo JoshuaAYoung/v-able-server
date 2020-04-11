@@ -25,7 +25,7 @@ authRouter
         return AuthService.comparePasswords(loginuser.password, dbUser.password)
           .then(compareMatch => {
             if (!compareMatch) {
-              return res.status(400).json({ error: 'Incorrect email or Password' })
+              return res.status(400).json({ error: 'Incorrect Email or Password' })
             }
             const subject = dbUser.email
             const payload = { user_id: dbUser.user_id }

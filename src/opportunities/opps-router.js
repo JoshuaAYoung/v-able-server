@@ -46,16 +46,16 @@ oppsRouter
   .route('/')
   .get((req, res, next) => {
     OppsService.getAllOpps(req.app.get('db'))
-      .modify(function (queryBuilder) {
-        if (req.query.searchTerm) {
-          queryBuilder
-            .where('description', 'ilike', `%${req.query.searchTerm}%`)
-            .orWhere('title', 'ilike', `%${req.query.searchTerm}%`)
-            .orWhere('name', 'ilike', `%${req.query.searchTerm}%`)
-            .orWhere('city', 'ilike', `%${req.query.searchTerm}%`)
-            .orWhere('state', 'ilike', `%${req.query.searchTerm}%`)
-        }
-      })
+      // .modify(function (queryBuilder) {
+      //   if (req.query.searchTerm) {
+      //     queryBuilder
+      //       .where('description', 'ilike', `%${req.query.searchTerm}%`)
+      //       .orWhere('title', 'ilike', `%${req.query.searchTerm}%`)
+      //       .orWhere('name', 'ilike', `%${req.query.searchTerm}%`)
+      //       .orWhere('city', 'ilike', `%${req.query.searchTerm}%`)
+      //       .orWhere('state', 'ilike', `%${req.query.searchTerm}%`)
+      //   }
+      // })
       .then(opps => {
         res.json(opps.map(scrubOpp))
       })
@@ -113,7 +113,7 @@ async function checkOppExists(req, res, next) {
 
     if (!opp)
       return res.status(404).json({
-        error: `Opp doesn't exist`
+        error: `Opportunity doesn't exist`
       })
 
     res.opp = opp

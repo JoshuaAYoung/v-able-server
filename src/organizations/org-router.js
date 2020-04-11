@@ -22,7 +22,7 @@ orgRouter
   .post('/', jsonParser, (req, res, next) => {
     const { usr_id, name, address, city, state, zipcode, phone, website } = req.body
 
-    for (const field of ['usr_id', 'name', 'city', 'state', 'zipcode'])
+    for (const field of ['usr_id', 'name', 'address', 'city', 'state', 'zipcode'])
       if (!req.body[field])
         return res.status(400).json({
           error: `Missing '${field}' in request body`
