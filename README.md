@@ -3,7 +3,7 @@
 
 # v • able server
 
-## Live App: [v•able](v.able.joshyoung.net)
+## Live App: [v•able](http://v.able.joshyoung.net)
 
 <p float="left"><img src="http://joshyoung.net/v-able/mobilescreenshots/landing-screenshot.png" width="20%">  <img src="http://joshyoung.net/v-able/mobilescreenshots/recruit-screenshot.png" width="20%"> <img src="http://joshyoung.net/v-able/mobilescreenshots/oppboard-screenshot.png" width="20%"> <img src="http://joshyoung.net/v-able/mobilescreenshots/details-screenshot.png" width="20%"></p>
 
