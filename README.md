@@ -5,8 +5,8 @@
 
 ## Live App
 #### [v•able Demo](v.able.joshyoung.net)
-<br />
-<img src="http://joshyoung.net/v-able/mobilescreenshots/landing-screenshot.png" width="20%">  <img src="http://joshyoung.net/v-able/mobilescreenshots/recruit-screenshot.png" width="20%"> <img src="http://joshyoung.net/v-able/mobilescreenshots/texteditor-screenshot.png" width="20%"> <img src="http://joshyoung.net/v-able/mobilescreenshots/oppboard-screenshot.png" width="20%"> <img src="http://joshyoung.net/v-able/mobilescreenshots/details-screenshot.png" width="20%">
+
+#### <img src="http://joshyoung.net/v-able/mobilescreenshots/landing-screenshot.png" width="20%">  <img src="http://joshyoung.net/v-able/mobilescreenshots/recruit-screenshot.png" width="20%"> <img src="http://joshyoung.net/v-able/mobilescreenshots/texteditor-screenshot.png" width="20%"> <img src="http://joshyoung.net/v-able/mobilescreenshots/oppboard-screenshot.png" width="20%"> <img src="http://joshyoung.net/v-able/mobilescreenshots/details-screenshot.png" width="20%">
 
 ## Description
 
