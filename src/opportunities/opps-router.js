@@ -5,6 +5,11 @@ const oppsRouter = express.Router()
 const xss = require('xss')
 const jsonParser = express.json();
 
+const xssOptions = {
+  css: false
+};
+
+myXss = new xss.FilterXSS(xssOptions);
 
 const removeNulls = obj => {
   const newObj = {};
@@ -21,7 +26,7 @@ const scrubOpp = opp => (
     opportunity_id: opp.opportunity_id,
     org_id: opp.org_id,
     title: xss(opp.title),
-    description: xss(opp.description),
+    description: opp.description,
     contact: xss(opp.contact),
     posted: new Date(opp.posted),
     start_date: xss(opp.start_date),
