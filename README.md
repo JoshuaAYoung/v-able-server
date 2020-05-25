@@ -2,10 +2,9 @@
 <img src="http://joshyoung.net/v-able/assets/v-able-logo.svg" width="15%"> 
 
 # v • able server
-[![CodeFactor](https://www.codefactor.io/repository/github/joshuaayoung/v-able-server/badge)](https://www.codefactor.io/repository/github/joshuaayoung/v-able-server)
-## Live App: [v•able](http://v.able.joshyoung.net)
+## Live App: [v•able](https://vable.dev)
 ## Client Repo: [v•able client](https://github.com/JoshuaAYoung/v-able-client)
-
+[![CodeFactor](https://www.codefactor.io/repository/github/joshuaayoung/v-able-server/badge)](https://www.codefactor.io/repository/github/joshuaayoung/v-able-server)
 <p float="left"><img src="http://joshyoung.net/v-able/mobilescreenshots/landing-screenshot.png" width="20%">  <img src="http://joshyoung.net/v-able/mobilescreenshots/recruit-screenshot.png" width="20%"> <img src="http://joshyoung.net/v-able/mobilescreenshots/oppboard-screenshot.png" width="20%"> <img src="http://joshyoung.net/v-able/mobilescreenshots/details-screenshot.png" width="20%"></p>
 
 ## Description
