@@ -1,5 +1,5 @@
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 function makeUsersArray() {
   return [
@@ -35,7 +35,7 @@ function makeUsersArray() {
       user_type: 'volunteer',
       date_created: new Date('2029-01-22T07:00:00.000Z'),
     },
-  ]
+  ];
 }
 
 function makeOrganizationsArray() {
@@ -49,7 +49,7 @@ function makeOrganizationsArray() {
       state: 'test state 1',
       zipcode: 80000,
       phone: '5555555555',
-      website: 'testwebsite1.com'
+      website: 'testwebsite1.com',
     },
     {
       organization_id: 2,
@@ -60,7 +60,7 @@ function makeOrganizationsArray() {
       state: 'test state 2',
       zipcode: 80000,
       phone: '5555555555',
-      website: 'testwebsite2.com'
+      website: 'testwebsite2.com',
     },
     {
       organization_id: 3,
@@ -71,7 +71,7 @@ function makeOrganizationsArray() {
       state: 'test state 3',
       zipcode: 80000,
       phone: '5555555555',
-      website: 'testwebsite3.com'
+      website: 'testwebsite3.com',
     },
     {
       organization_id: 4,
@@ -82,9 +82,9 @@ function makeOrganizationsArray() {
       state: 'test state 4',
       zipcode: 80000,
       phone: '5555555555',
-      website: 'testwebsite4.com'
-    }
-  ]
+      website: 'testwebsite4.com',
+    },
+  ];
 }
 
 function makeOpportunitiesArray() {
@@ -93,7 +93,8 @@ function makeOpportunitiesArray() {
       opportunity_id: 1,
       org_id: 1,
       title: 'Test Title 1',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?',
       contact: 'testcontact1@email.com',
       start_date: 'ASAP',
       duration: 'test duration 1',
@@ -108,7 +109,8 @@ function makeOpportunitiesArray() {
       opportunity_id: 2,
       org_id: 2,
       title: 'Test Title 2',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?',
       contact: 'testcontact2@email.com',
       start_date: 'ASAP',
       duration: 'test duration 2',
@@ -123,7 +125,8 @@ function makeOpportunitiesArray() {
       opportunity_id: 3,
       org_id: 3,
       title: 'Test Title 3',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?',
       contact: 'testcontact3@email.com',
       start_date: 'ASAP',
       duration: 'test duration 3',
@@ -138,7 +141,8 @@ function makeOpportunitiesArray() {
       opportunity_id: 4,
       org_id: 4,
       title: 'Test Title 4',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?',
       contact: 'testcontact4@email.com',
       start_date: 'ASAP',
       duration: 'test duration 4',
@@ -148,12 +152,14 @@ function makeOpportunitiesArray() {
       license: 'test license 4',
       remote: false,
       posted: new Date('2029-01-22T07:00:00.000Z'),
-    }
-  ]
+    },
+  ];
 }
 
 function makeExpectedOppById(opportunity, organizations) {
-  const organization = organizations.find(org => org.organization_id === opportunity.org_id)
+  const organization = organizations.find(
+    (org) => org.organization_id === opportunity.org_id
+  );
   return {
     opportunity_id: opportunity.opportunity_id,
     org_id: opportunity.org_id,
@@ -174,12 +180,14 @@ function makeExpectedOppById(opportunity, organizations) {
     city: organization.city,
     state: organization.state,
     zipcode: organization.zipcode,
-    website: organization.website
-  }
+    website: organization.website,
+  };
 }
 
 function makeExpectedOpportunity(opportunity, organizations) {
-  const organization = organizations.find(org => org.organization_id === opportunity.org_id)
+  const organization = organizations.find(
+    (org) => org.organization_id === opportunity.org_id
+  );
   return {
     opportunity_id: opportunity.opportunity_id,
     org_id: opportunity.org_id,
@@ -190,8 +198,8 @@ function makeExpectedOpportunity(opportunity, organizations) {
     name: organization.name,
     city: organization.city,
     state: organization.state,
-    zipcode: organization.zipcode
-  }
+    zipcode: organization.zipcode,
+  };
 }
 
 function makeMaliciousOpportunity(organizations) {
@@ -208,27 +216,28 @@ function makeMaliciousOpportunity(organizations) {
     experience: 'none',
     remote: false,
     posted: new Date(),
-  }
+  };
   const expectedOpportunity = {
     ...makeExpectedOpportunity(maliciousOpportunity, organizations),
-    description: 'Naughty naughty very naughty &lt;script&gt;alert(\"xss\");&lt;/script&gt;',
+    description:
+      'Naughty naughty very naughty &lt;script&gt;alert("xss");&lt;/script&gt;',
     title: `Bad image <img src="https://url.to.file.which/does-not.exist">. But not <strong>all</strong> bad.`,
-  }
+  };
   return {
     maliciousOpportunity,
     expectedOpportunity,
-  }
+  };
 }
 
 function makeOpportunitiesFixtures() {
-  const testUsers = makeUsersArray()
-  const testOrganizations = makeOrganizationsArray()
-  const testOpportunities = makeOpportunitiesArray()
-  return { testUsers, testOrganizations, testOpportunities }
+  const testUsers = makeUsersArray();
+  const testOrganizations = makeOrganizationsArray();
+  const testOpportunities = makeOpportunitiesArray();
+  return { testUsers, testOrganizations, testOpportunities };
 }
 
 function cleanTables(db) {
-  return db.transaction(trx =>
+  return db.transaction((trx) =>
     trx.raw(
       `TRUNCATE
         applications,
@@ -238,52 +247,44 @@ function cleanTables(db) {
         RESTART IDENTITY CASCADE
       `
     )
-  )
+  );
 }
 
 function seedUsers(db, users) {
-  const preppedUsers = users.map(user => ({
+  const preppedUsers = users.map((user) => ({
     ...user,
-    password: bcrypt.hashSync(user.password, 1)
-  }))
-  return db.into('users').insert(preppedUsers)
+    password: bcrypt.hashSync(user.password, 1),
+  }));
+  return db.into('users').insert(preppedUsers);
 }
 
 function seedOrganizations(db, organizations) {
-  return db.into('organizations').insert(organizations)
+  return db.into('organizations').insert(organizations);
 }
 
 function seedOpportunitiesTables(db, users, organizations, opportunities) {
   // use a transaction to group the queries and auto rollback on any failure
-  return db.transaction(async trx => {
-    await seedUsers(trx, users)
-    await seedOrganizations(trx, organizations)
-    await trx.into('opportunities').insert(opportunities)
-  })
+  return db.transaction(async (trx) => {
+    await seedUsers(trx, users);
+    await seedOrganizations(trx, organizations);
+    await trx.into('opportunities').insert(opportunities);
+  });
 }
 
 function seedMaliciousOpportunity(db, users, organizations, opportunity) {
   return db
     .into('users')
     .insert(users)
-    .then(() =>
-      db
-        .into('organizations')
-        .insert(organizations)
-    )
-    .then(() =>
-      db
-        .into('opportunities')
-        .insert([opportunity])
-    )
+    .then(() => db.into('organizations').insert(organizations))
+    .then(() => db.into('opportunities').insert([opportunity]));
 }
 
 function makeAuthHeader(user, secret = process.env.JWT_SECRET) {
   const token = jwt.sign({ user_id: user.user_id }, secret, {
     subject: user.email,
     algorithm: 'HS256',
-  })
-  return `Bearer ${token}`
+  });
+  return `Bearer ${token}`;
 }
 
 module.exports = {
@@ -300,4 +301,4 @@ module.exports = {
   seedMaliciousOpportunity,
   makeAuthHeader,
   seedUsers,
-}
+};

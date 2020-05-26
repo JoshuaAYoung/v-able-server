@@ -14,23 +14,15 @@ const OppsService = {
         'org.state',
         'org.zipcode'
       )
-      .leftJoin(
-        'organizations AS org',
-        'opp.org_id',
-        'org.organization_id'
-      )
+      .leftJoin('organizations AS org', 'opp.org_id', 'org.organization_id');
   },
   getById(db, id) {
     return db
       .from('opportunities AS opp')
       .select('*')
-      .leftJoin(
-        'organizations AS org',
-        'opp.org_id',
-        'org.organization_id'
-      )
+      .leftJoin('organizations AS org', 'opp.org_id', 'org.organization_id')
       .where('opp.opportunity_id', id)
-      .first()
+      .first();
   },
   insertOpp(db, newOpp) {
     return db
@@ -38,10 +30,8 @@ const OppsService = {
       .into('opportunities')
       .returning('*')
       .then(([opp]) => opp)
-      .then(opp =>
-        OppsService.getById(db, opp.opportunity_id)
-      )
-  }
-}
+      .then((opp) => OppsService.getById(db, opp.opportunity_id));
+  },
+};
 
-module.exports = OppsService
+module.exports = OppsService;

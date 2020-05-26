@@ -1,5 +1,4 @@
-
-<img src="http://joshyoung.net/v-able/assets/v-able-logo.svg" width="15%"> 
+<img src="http://joshyoung.net/v-able/assets/v-able-logo.svg" width="15%">
 
 # v • able server
 
@@ -9,9 +8,10 @@
 
 ## Description
 
-v•able is a platform for connecting experienced volunteers to non-profit organizations that have a specific need for skilled labor or professional services and are having a hard time finding them on the open market. 
+v•able is a platform for connecting experienced volunteers to non-profit organizations that have a specific need for skilled labor or professional services and are having a hard time finding them on the open market.
 
 ## Notes on Current Features
+
 - The app utilizes JSON Web Tokens and bCrypt hashing for auth & auth. I know that from a security standpoint, this isn't a fool proof system. In terms of a learning experience, however, I couldn't have asked for better.
 - In addition to the client, the server also validates form inputs with Regex.
 - The NPM package "XSS" is used to sanitize all "text" type inputs, with the exception of the opportunity description. The rich text editor writes basic inline styling which the XSS package filters out, with no options of adding to the default whitelist. This will be a focus of future versions.
@@ -21,7 +21,7 @@ v•able is a platform for connecting experienced volunteers to non-profit organ
 
 ## Features to Come
 
-- A way for organizations users to see and edit their profiles and posted opportunities. 
+- A way for organizations users to see and edit their profiles and posted opportunities.
 - A way for volunteer users to see and edit their profiles and the jobs they've applied for.
 - A system for volunteers to save opportunities to a list of favorites.
 - A way for volunteer users to add a profile with resumes and a way for organizations to see a volunteer applicant's information.
@@ -73,7 +73,6 @@ Javascript
 
 [Knex](http://knexjs.org/)
 
-
 ## The Author
 
 **Josh Young** - [Portfolio](https://joshyoung.net)
@@ -81,5 +80,3 @@ Javascript
 ## License
 
 This project is licensed under the MIT License
-
-
