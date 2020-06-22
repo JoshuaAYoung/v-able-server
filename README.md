@@ -18,7 +18,7 @@ v•able is a platform for connecting experienced volunteers to non-profit organ
 - In addition to the client, the server also validates form inputs with regular expressions.
 - The NPM package "XSS" is used to sanitize all "text" type inputs, with the exception of the opportunity description. The rich text editor writes basic inline styling which the XSS package filters out, with no options of adding to the default whitelist. This will be a focus of future versions.
 - The database schema was built with future features in mind. To note:
-  - An "applications" table connects volunteer users with the "opportunitites" table in order to aid the implementation of application tracking and messaging
+  - An "applications" table connects volunteer users with the "opportunitites" table in order to aid the future implementation of application tracking and messaging
   - Breaking out organizations from users (even though on the client side it's one form and one fetch request) will, in the future, allow users to add multiple organizations from a single account.
 
 ## Features to Come
