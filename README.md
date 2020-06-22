@@ -6,7 +6,7 @@
 
 ## Client Repo: [v•able client](https://github.com/JoshuaAYoung/v-able-client)
 
-<p float="left"><img src="http://joshyoung.net/v-able/mobilescreenshots/landing-screenshot.png" width="20%">  <img src="http://joshyoung.net/v-able/mobilescreenshots/recruit-screenshot.png" width="20%"> <img src="http://joshyoung.net/v-able/mobilescreenshots/oppboard-screenshot.png" width="20%"> <img src="http://joshyoung.net/v-able/mobilescreenshots/details-screenshot.png" width="20%"></p>
+<p float="left"><img src="http://vable.dev/assets/MobileScreenshots/landing-screenshot.png" width="20%">  <img src="http://vable.dev/assets/MobileScreenshots/recruit-screenshot.png" width="20%"> <img src="http://vable.dev/assets/MobileScreenshots/oppboard-screenshot.png" width="20%"> <img src="http://vable.dev/assets/MobileScreenshots/details-screenshot.png" width="20%"></p>
 
 ## Description
 
