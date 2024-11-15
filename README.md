@@ -21,7 +21,7 @@ v•able is a platform for connecting experienced volunteers to non-profit organ
   - An "applications" table connects volunteer users with the "opportunitites" table in order to aid the future implementation of application tracking and messaging
   - Breaking out organizations from users (even though on the client side it's one form and one fetch request) will, in the future, allow users to add multiple organizations from a single account.
 
-## Features to Come
+## Future Features (that almost assuredly will never come)
 
 - A way for organizations users to see and edit their profiles and posted opportunities.
 - A way for volunteer users to see and edit their profiles and the jobs they've applied for.
